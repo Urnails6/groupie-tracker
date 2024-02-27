@@ -3,11 +3,26 @@
 {{define "title"}}
 <title>Groupie Tracker Home</title>
 {{end}}
+
+
+
 {{define "content"}}
 
-
-
-<h1>Hello world</h1>
+<h1>API Response:</h1>
+  <ul>
+        {{range .}}
+        <li>
+            <img src="{{.Image}}" alt="{{.Name}} Image">
+            <h2>{{.Name}}</h2>
+            <p>Members: {{range .Members}}{{.}}, {{end}}</p>
+            <p>Creation Date: {{.CreationDate}}</p>
+            <p>First Album: {{.FirstAlbum}}</p>
+            <p>Locations: {{.Locations}}</p>
+            <p>Concert Dates: {{.ConcertDates}}</p>
+            <p>Relations: {{.Relations}}</p>
+        </li>
+        {{end}}
+    </ul>
 
 
 
