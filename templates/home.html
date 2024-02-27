@@ -8,21 +8,40 @@
 
 {{define "content"}}
 
-<h1>API Response:</h1>
-  <ul>
+<img src="assets/music.jpg" class="img-fluid" alt="banner">
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-6 g-4">
         {{range .}}
-        <li>
-            <img src="{{.Image}}" alt="{{.Name}} Image">
-            <h2>{{.Name}}</h2>
-            <p>Members: {{range .Members}}{{.}}, {{end}}</p>
-            <p>Creation Date: {{.CreationDate}}</p>
-            <p>First Album: {{.FirstAlbum}}</p>
-            <p>Locations: {{.Locations}}</p>
-            <p>Concert Dates: {{.ConcertDates}}</p>
-            <p>Relations: {{.Relations}}</p>
-        </li>
+
+        <div class="col">
+        <div class="card h-100">
+            <img class="card-img-top" src="{{.Image}}" alt="{{.Name}} Image">
+            <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">{{.Name}}</h5>
+            </div>
+        </div>
+        </div>
         {{end}}
-    </ul>
+
+    </div>
+</div>
+
+
+
+<!-- <ul>
+    {{range .}}
+    <li>
+        <img src="{{.Image}}" alt="{{.Name}} Image">
+        <h2>{{.Name}}</h2>
+        <p>Members: {{range .Members}}{{.}}, {{end}}</p>
+        <p>Creation Date: {{.CreationDate}}</p>
+        <p>First Album: {{.FirstAlbum}}</p>
+        <p>Locations: {{.Locations}}</p>
+        <p>Concert Dates: {{.ConcertDates}}</p>
+        <p>Relations: {{.Relations}}</p>
+    </li>
+    {{end}}
+</ul> -->
 
 
 
