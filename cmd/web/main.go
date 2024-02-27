@@ -1,9 +1,9 @@
 package main
 
 import (
+	"GROUPIETRACKER/pkg/handlers"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"net/http"
 )
@@ -20,7 +20,7 @@ type Data struct {
 	Relations    string   `json:"relations"`
 }
 
-const portNumber = ":8080"
+const portNumber = ":8090"
 
 func main() {
 
@@ -52,20 +52,10 @@ func main() {
 		return
 	}
 
-	http.HandleFunc("/", Home)
+	http.HandleFunc("/", handlers.Home)
+	fmt.Println(fmt.Sprintf("Staring application on port %s", portNumber))
+
 	_ = http.ListenAndServe(portNumber, nil)
 
 }
 
-// Home is the handler for the home page
-func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "home.html")
-}
-
-func renderTemplate(w http.ResponseWriter, tmpl string) {
-	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/template.html")
-	err := parsedTemplate.Execute(w, nil)
-	if err != nil {
-		fmt.Println("error parsing template:", err)
-	}
-}
