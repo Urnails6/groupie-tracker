@@ -1,0 +1,25 @@
+{{template "template" .}}
+
+{{define "title"}}
+<title>{{.Name}}</title>
+{{end}}
+
+
+
+{{define "content"}}
+
+<div class="container">
+    <h1>Artist Details</h1>
+    <img src="{{.Image}}" alt="{{.Name}} Image">
+    <h2>{{.Name}}</h2>
+    <p>Locations:</p>
+    <ul>
+        {{range .Locations}}
+        <li>"{{.}}</li>
+        {{end}}
+    </ul>
+    <p>Concert Dates: {{.ConcertDates}}</p>
+    <p>Relations: {{.Relations}}</p>
+</div>
+
+{{end}}

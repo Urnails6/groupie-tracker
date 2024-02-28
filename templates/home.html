@@ -8,21 +8,20 @@
 
 {{define "content"}}
 
-<img src="assets/music.jpg" class="img-fluid" alt="banner">
 <div class="container">
     <div class="row row-cols-1 row-cols-md-6 g-4">
         {{range .}}
-
         <div class="col">
-        <div class="card h-100">
-            <img class="card-img-top" src="{{.Image}}" alt="{{.Name}} Image">
-            <div class="card-body">
-            <h5 class="card-title" style="text-align: center;">{{.Name}}</h5>
-            </div>
-        </div>
+            <a href="/details?id={{.ID}}">
+                <div class="card h-100 card-hover">
+                    <img class="card-img-top" src="{{.Image}}" alt="{{.Name}} Image">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">{{.Name}}</h5>
+                    </div>
+                </div>
+            </a>
         </div>
         {{end}}
-
     </div>
 </div>
 
@@ -42,7 +41,6 @@
     </li>
     {{end}}
 </ul> -->
-
 
 
 {{end}}

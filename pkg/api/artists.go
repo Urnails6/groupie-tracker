@@ -44,3 +44,29 @@ func GetArtists() []Artist {
 
 	return artists
 }
+
+func FetchArtistDetails(artistID string) *Artist {
+	apiURL := "https://groupietrackers.herokuapp.com/api/artists/"+artistID
+
+	response, err := http.Get(apiURL)
+	if err != nil {
+		fmt.Printf("Error fetching data from API: %v\n", err)
+		return nil
+	}
+	defer response.Body.Close()
+
+	responseData, err := io.ReadAll(response.Body)
+	if err != nil {
+		fmt.Printf("Error reading response body: %v\n", err)
+		return nil
+	}
+
+	var artist Artist
+	err = json.Unmarshal(responseData, &artist)
+	if err != nil {
+		fmt.Printf("Error unmarshaling JSON: %v\n", err)
+		return nil
+	}
+
+	return &artist
+}
