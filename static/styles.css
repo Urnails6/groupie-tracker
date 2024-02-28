@@ -5,3 +5,10 @@
     transition: transform 0.3s ease;
     background-color: rgba(0, 0, 0, 0.8)
 }
+
+.details {
+
+ font-family: 'Courier New', Courier, monospace;
+ color:blue
+ 
+}
