@@ -16,7 +16,7 @@
                 <div class="card h-100 card-hover">
                     <img class="card-img-top" src="{{.Image}}" alt="{{.Name}} Image">
                     <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">{{.Name}}</h5>
+                        <h6 class="card-title" style="text-align: center;">{{.Name}}</h6>
                     </div>
                 </div>
             </a>
@@ -24,23 +24,6 @@
         {{end}}
     </div>
 </div>
-
-
-
-<!-- <ul>
-    {{range .}}
-    <li>
-        <img src="{{.Image}}" alt="{{.Name}} Image">
-        <h2>{{.Name}}</h2>
-        <p>Members: {{range .Members}}{{.}}, {{end}}</p>
-        <p>Creation Date: {{.CreationDate}}</p>
-        <p>First Album: {{.FirstAlbum}}</p>
-        <p>Locations: {{.Locations}}</p>
-        <p>Concert Dates: {{.ConcertDates}}</p>
-        <p>Relations: {{.Relations}}</p>
-    </li>
-    {{end}}
-</ul> -->
 
 
 {{end}}

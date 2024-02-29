@@ -6,18 +6,19 @@
 
 {{define "content"}}
 <div class="container">
-    <h1 class="display-1 d-flex justify-content-center"> {{.Name}} </h1><br>
+    <p class="display-3 d-flex justify-content-center"> {{.Name}} </p><br>
     <img class="rounded mx-auto d-block d-flex justify-content-center" src="{{.Image}}" alt="{{.Name}} Image">
-    <h2 class="d-flex justify-content-right details" >Details</h2>
+    <br><br>
+    <h2 class="d-flex justify-content-right details" >About</h2><br>
     <p><strong>Creation Date: </strong>{{.CreationDate}}</p><hr>
     <p><strong>First Album: </strong> {{.FirstAlbum}}</p><hr>
     <p><strong>Concerts: </strong></p>
         
-    <ul>
+    <ul class="list-group list-group-flush">
         {{range .LocationsData}}
-            <li>{{.Location}}: <br> {{.Date}}</li>
+            <li class="list-group-item">{{.Location}}:<br> <span class="text-secondary">{{.Date}}</span> </li>
             <br>
         {{end}}
-    </ul><hr>
+    </ul>
 </div>
 {{end}}
