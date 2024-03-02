@@ -1,0 +1,24 @@
+{{template "template" .}}
+
+{{define "title"}}
+<title>{{.Name}}</title>
+{{end}}
+
+{{define "content"}}
+<div class="container">
+    <p class="display-3 d-flex justify-content-center"> {{.Name}} </p><br>
+    <img class="rounded mx-auto d-block d-flex justify-content-center" src="{{.Image}}" alt="{{.Name}} Image">
+    <br><br>
+    <h2 class="d-flex justify-content-right details" >About</h2><br>
+    <p><strong>Creation Date: </strong>{{.CreationDate}}</p><hr>
+    <p><strong>First Album: </strong> {{.FirstAlbum}}</p><hr>
+    <p><strong>Concerts: </strong></p>
+        
+    <ul class="list-group list-group-flush">
+        {{range .LocationsData}}
+            <li class="list-group-item">{{.Location}}:<br> <span class="text-secondary">{{.Date}}</span> </li>
+            <br>
+        {{end}}
+    </ul>
+</div>
+{{end}}
