@@ -15,8 +15,12 @@ type LocationData struct {
 
 // Home is the handler for the home page
 func Home(w http.ResponseWriter, r *http.Request) {
-	artists := api.GetArtists()
-	render.RenderTemplate(w, "home.html", artists)
+	if r.URL.Path != "/" {
+		NotFoundHandler(w, r)
+	} else {
+		artists := api.GetArtists()
+		render.RenderTemplate(w, "home.html", artists)
+	}
 }
 
 func ArtistDetails(w http.ResponseWriter, r *http.Request) {
@@ -26,7 +30,9 @@ func ArtistDetails(w http.ResponseWriter, r *http.Request) {
 	// Fetch the artist details from the database or your data source
 	artist, err := api.FetchArtistDetails(artistID)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		//http.Error(w, err.Error(), http.StatusInternalServerError)
+		var arg interface{} = nil
+		render.RenderTemplate(w, "error.html", arg)
 		return
 	}
 
@@ -66,4 +72,11 @@ func ArtistDetails(w http.ResponseWriter, r *http.Request) {
 
 	// Render the template with the data
 	render.RenderTemplate(w, "details.html", templateData)
+}
+
+
+// NotFoundHandler handles 404 errors
+func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
+	var arg interface{} = nil
+	render.RenderTemplate(w, "error.html", arg)
 }

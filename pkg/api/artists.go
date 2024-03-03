@@ -63,6 +63,10 @@ func FetchArtistDetails(artistID string) (*Artist, error) {
 		return nil, fmt.Errorf("error decoding JSON: %v", err)
 	}
 
+	if artist.ID == 0 {
+		return nil, fmt.Errorf("id does not exist")
+	}
+
 	// Check if LocationsURL is not empty
 	if artist.LocationsURL != "" {
 		locationsResponse, err := http.Get(artist.LocationsURL)
