@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"sort"
 )
 
 type Artist struct {
@@ -44,6 +45,11 @@ func GetArtists() []Artist {
 		fmt.Printf("Error unmarshaling JSON: %v\n", err)
 		return nil
 	}
+
+	// Sort the artists alphabetically by name
+	sort.Slice(artists, func(i, j int) bool {
+		return artists[i].Name < artists[j].Name
+	})
 
 	return artists
 }
